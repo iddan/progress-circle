@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css?family=Teko:600");
+.circle-progress circle {
+  stroke-width: .5rem;
+  transform: scale(0.9);
+  transform-origin: center; }
+.circle-progress__bar {
+  stroke: #FE5D26;
+  transition: stroke-dashoffset .5s linear; }
+.circle-progress__background {
+  stroke: #223843; }
+
+body {
+  background: #232020;
+  color: #FFFFFF;
+  display: flex;
+  font-family: sans-serif;
+  flex-wrap: wrap; }
+
+input {
+  outline: none;
+  border: none;
+  background: #223843;
+  color: #FFFFFF; }
+
+header {
+  margin: 1rem; }
+
+h1 {
+  width: 12rem;
+  text-transform: uppercase;
+  font-family: "Teko", sans-serif;
+  font-size: 3.5rem;
+  margin: 0; }
+
+a {
+  color: #FE5D26; }
+
+input {
+  width: 3rem;
+  padding: 0.5em 0;
+  margin-left: 1rem;
+  border-bottom: 2px solid #FE5D26;
+  transition: border 100ms; }
+  input:focus {
+    border-width: 3px; }
+
+.circle-progress {
+  padding: 2rem;
+  display: flex;
+  justify-content: center; }
+  .circle-progress__text {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    font-family: "Teko", sans-serif;
+    font-size: 4em;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+
+/*# sourceMappingURL=index.css.map */

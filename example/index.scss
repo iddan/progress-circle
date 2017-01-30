@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css?family=Teko:600');
+
+$Teko: 'Teko', sans-serif;
+$white: #FFFFFF;
+$japanese-indigo: #223843;
+$raisin-black: #232020;
+$giants-orange: #FE5D26;
+
+.circle-progress {
+  
+  circle {
+    stroke-width: .5rem;
+    transform: scale(0.9);
+    transform-origin: center;
+  }
+
+  &__bar {
+    stroke: $giants-orange;
+    transition: stroke-dashoffset .5s linear;
+  }
+  
+  &__background {
+    stroke: $japanese-indigo;
+  }
+}
+
+// # UNNECESSARY STYLE
+// ## RESET
+body {
+  background: $raisin-black;
+  color: $white;
+  display: flex;
+  font-family: sans-serif;
+  flex-wrap: wrap;
+}
+
+input {
+  outline: none;
+  border: none;
+  background: $japanese-indigo;
+  color: $white;
+}
+
+// ## HEADER
+
+header {
+  margin: 1rem;
+}
+
+h1 {
+  width: 12rem;
+  text-transform: uppercase;
+  font-family: $Teko;
+  font-size: 3.5rem;
+  margin: 0;
+}
+
+a {
+  color: $giants-orange;
+}
+
+// ## CONTENT
+
+input {
+  width: 3rem;
+  padding: 0.5em 0;
+  margin-left: 1rem;
+  border-bottom: 2px solid $giants-orange;
+  transition: border 100ms;
+  
+  &:focus {
+    border-width: 3px;
+  }
+}
+
+.circle-progress {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+
+  &__text {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    font: {
+      family: $Teko;
+      size: 4em;
+    }
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
