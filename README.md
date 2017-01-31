@@ -3,7 +3,7 @@
 [View on Codepen][Progress Circle Codepen]
 ![](http://i.giphy.com/l3q2TmsV9FuNzyabK.gif)
 ```bash
-yarn install progress-circle
+yarn add progress-circle
 ```
 [Progress Circle Codepen]: http://codepen.io/iddan/pen/WRdzzv
 [React]: https://facebook.github.io/react/
