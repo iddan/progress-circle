@@ -1,7 +1,7 @@
 {
   "name": "progress-circle",
   "description": "Circular progress bar made with React, SVG and CSS transitions.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "lib/index.js",
   "scripts": {
     "build": "npm run build:src; npm run build:example",
