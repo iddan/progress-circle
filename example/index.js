@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -258,6 +258,12 @@ process.umask = function() { return 0; };
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+module.exports = React;
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -301,7 +307,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 module.exports = emptyFunction;
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -363,7 +369,7 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -384,12 +390,6 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-module.exports = React;
-
-/***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -406,7 +406,7 @@ module.exports = React;
 
 
 
-var emptyFunction = __webpack_require__(1);
+var emptyFunction = __webpack_require__(2);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -466,66 +466,114 @@ module.exports = warning;
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ */
+
+if (process.env.NODE_ENV !== 'production') {
+  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
+    Symbol.for &&
+    Symbol.for('react.element')) ||
+    0xeac7;
+
+  var isValidElement = function(object) {
+    return typeof object === 'object' &&
+      object !== null &&
+      object.$$typeof === REACT_ELEMENT_TYPE;
+  };
+
+  // By explicitly using `prop-types` you are opting into new development behavior.
+  // http://fb.me/prop-types-in-prod
+  var throwOnDirectAccess = true;
+  module.exports = __webpack_require__(13)(isValidElement, throwOnDirectAccess);
+} else {
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  module.exports = __webpack_require__(12)();
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
+});
+exports.PartialCircle = undefined;
+
+var _PartialCircle = __webpack_require__(10);
+
+Object.defineProperty(exports, 'PartialCircle', {
+  enumerable: true,
+  get: function get() {
+    return _interopRequireDefault(_PartialCircle).default;
+  }
 });
 exports.default = ProgressCircle;
 
-var _react = __webpack_require__(4);
+var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(12);
+var _propTypes = __webpack_require__(6);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
+var _PartialCircle2 = _interopRequireDefault(_PartialCircle);
+
 function _interopRequireDefault(obj) {
-	return obj && obj.__esModule ? obj : { default: obj };
+  return obj && obj.__esModule ? obj : { default: obj };
 }
 
 function ProgressCircle(_ref) {
-	var radius = _ref.radius,
-	    _ref$value = _ref.value,
-	    value = _ref$value === undefined ? 1 : _ref$value,
-	    children = _ref.children;
+  var radius = _ref.radius,
+      _ref$value = _ref.value,
+      value = _ref$value === undefined ? 1 : _ref$value,
+      children = _ref.children;
 
-	var pct = (1 - value) * Math.PI * 100;
-	return _react2.default.createElement('div', null, _react2.default.createElement('div', { className: 'circle-progress' }, _react2.default.createElement('div', { style: styles.wrap }, _react2.default.createElement('svg', { width: radius * 2, height: radius * 2, viewBox: '0 0 100 100', version: '1.1', xmlns: 'http://www.w3.org/2000/svg' }, _react2.default.createElement('circle', { className: 'circle-progress__background', r: '50', cx: '50', cy: '50', fill: 'transparent' }), _react2.default.createElement('circle', { className: 'circle-progress__bar', r: '50', cx: '50', cy: '50', fill: 'transparent', strokeDasharray: Math.PI * 100, strokeDashoffset: pct })), children)));
+  return _react2.default.createElement('div', null, _react2.default.createElement('div', { className: 'circle-progress' }, _react2.default.createElement('div', { style: styles.wrap }, _react2.default.createElement('svg', { width: radius * 2, height: radius * 2, viewBox: '0 0 100 100', version: '1.1', xmlns: 'http://www.w3.org/2000/svg' }, _react2.default.createElement(_PartialCircle2.default, { radius: radius, value: value })), children)));
 }
 
 ProgressCircle.propTypes = {
-	children: _propTypes2.default.node.isRequired,
-	value: _propTypes2.default.number.isRequired,
-	radius: _propTypes2.default.number.isRequired
+  children: _propTypes2.default.node.isRequired,
+  value: _propTypes2.default.number.isRequired,
+  radius: _propTypes2.default.number.isRequired
 };
 
 var styles = {
-	wrap: {
-		display: 'inline-block',
-		position: 'relative'
-	}
+  wrap: {
+    display: 'inline-block',
+    position: 'relative'
+  }
 };
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = ReactDOM;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2____ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2____ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_____default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2____);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -598,7 +646,45 @@ var Demo = function (_Component) {
 __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Demo, null), document.querySelector('#circle-progress'));
 
 /***/ }),
-/* 9 */
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = PartialCircle;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(6);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+function PartialCircle(_ref) {
+  var radius = _ref.radius,
+      _ref$value = _ref.value,
+      value = _ref$value === undefined ? 1 : _ref$value;
+
+  var pct = (1 - value) * Math.PI * 100;
+  return _react2.default.createElement('g', null, _react2.default.createElement('circle', { className: 'circle-progress__background', r: '50', cx: '50', cy: '50', fill: 'transparent' }), _react2.default.createElement('circle', { className: 'circle-progress__bar', r: '50', cx: '50', cy: '50', fill: 'transparent', strokeDasharray: Math.PI * 100, strokeDashoffset: pct }));
+}
+
+PartialCircle.propTypes = {
+  value: _propTypes2.default.number.isRequired,
+  radius: _propTypes2.default.number.isRequired
+};
+
+/***/ }),
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -614,9 +700,9 @@ __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODU
 
 
 if (process.env.NODE_ENV !== 'production') {
-  var invariant = __webpack_require__(2);
+  var invariant = __webpack_require__(3);
   var warning = __webpack_require__(5);
-  var ReactPropTypesSecret = __webpack_require__(3);
+  var ReactPropTypesSecret = __webpack_require__(4);
   var loggedTypeFailures = {};
 }
 
@@ -667,7 +753,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -682,9 +768,9 @@ module.exports = checkPropTypes;
 
 
 
-var emptyFunction = __webpack_require__(1);
-var invariant = __webpack_require__(2);
-var ReactPropTypesSecret = __webpack_require__(3);
+var emptyFunction = __webpack_require__(2);
+var invariant = __webpack_require__(3);
+var ReactPropTypesSecret = __webpack_require__(4);
 
 module.exports = function() {
   function shim(props, propName, componentName, location, propFullName, secret) {
@@ -733,7 +819,7 @@ module.exports = function() {
 
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -748,12 +834,12 @@ module.exports = function() {
 
 
 
-var emptyFunction = __webpack_require__(1);
-var invariant = __webpack_require__(2);
+var emptyFunction = __webpack_require__(2);
+var invariant = __webpack_require__(3);
 var warning = __webpack_require__(5);
 
-var ReactPropTypesSecret = __webpack_require__(3);
-var checkPropTypes = __webpack_require__(9);
+var ReactPropTypesSecret = __webpack_require__(4);
+var checkPropTypes = __webpack_require__(11);
 
 module.exports = function(isValidElement, throwOnDirectAccess) {
   /* global Symbol */
@@ -1249,43 +1335,6 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
   return ReactPropTypes;
 };
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
-
-if (process.env.NODE_ENV !== 'production') {
-  var REACT_ELEMENT_TYPE = (typeof Symbol === 'function' &&
-    Symbol.for &&
-    Symbol.for('react.element')) ||
-    0xeac7;
-
-  var isValidElement = function(object) {
-    return typeof object === 'object' &&
-      object !== null &&
-      object.$$typeof === REACT_ELEMENT_TYPE;
-  };
-
-  // By explicitly using `prop-types` you are opting into new development behavior.
-  // http://fb.me/prop-types-in-prod
-  var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(11)(isValidElement, throwOnDirectAccess);
-} else {
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  module.exports = __webpack_require__(10)();
-}
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
