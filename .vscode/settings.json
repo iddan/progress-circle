@@ -1,0 +1,6 @@
+{
+  "files.exclude": {
+    ".sass-cache/": "explorerExcludedFiles",
+    "node_modules/": "explorerExcludedFiles"
+  }
+}

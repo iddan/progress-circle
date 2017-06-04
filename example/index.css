@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Teko:600");
 .circle-progress circle {
-  stroke-width: .5rem;
+  stroke-width: 8px;
   transform: scale(0.9);
   transform-origin: center; }
 .circle-progress__bar {

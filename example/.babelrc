@@ -1,0 +1,10 @@
+{
+	"presets": [
+		["env", {
+			"browsers": "> 0.25%",
+			"modules": false
+		}],
+		"stage-0",
+		"react"
+	]
+}

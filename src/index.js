@@ -1,6 +1,7 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function ProgressCircle({ radius, value = 1, children } : { radius: number, value: number, children: any }) {
+export default function ProgressCircle({ radius, value = 1, children }) {
 	const pct = (1 - value) * Math.PI * 100;
 	return <div>
 		<div className="circle-progress">
